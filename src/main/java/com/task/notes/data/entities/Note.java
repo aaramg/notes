@@ -26,6 +26,10 @@ public class Note extends BaseEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    public Note() {
+        super();
+    }
+
     public Note(final String title, final User user, final LocalDateTime created) {
         super(created);
         this.title = title;
