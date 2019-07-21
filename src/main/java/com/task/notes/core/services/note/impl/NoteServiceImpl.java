@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -28,6 +29,7 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private UserService userService;
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Note> find(final long id, final long userId) {
         logger.trace("Finding Note:{} for User:{}...", id, userId);
@@ -38,6 +40,7 @@ public class NoteServiceImpl implements NoteService {
         return result;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Note get(final long id, final long userId) {
         logger.trace("Getting Note:{} for User:{}...", id, userId);
@@ -52,6 +55,7 @@ public class NoteServiceImpl implements NoteService {
         return result;
     }
 
+    @Transactional
     @Override
     public Note create(final long userId, final NoteModificationRequest request) {
         notNull(request, "request cannot be null");
@@ -67,6 +71,7 @@ public class NoteServiceImpl implements NoteService {
         return result;
     }
 
+    @Transactional
     @Override
     public Note update(final long id, final long userId, final NoteModificationRequest request) {
         notNull(request, "request cannot be null");
@@ -87,6 +92,7 @@ public class NoteServiceImpl implements NoteService {
         return result;
     }
 
+    @Transactional
     @Override
     public void delete(final long id, final long userId) {
         logger.trace("Deleting Note:{} for User:{}...", id, userId);
