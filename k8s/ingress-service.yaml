@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: mysite.com
+      http:
+        paths:
+          - backend:
+              serviceName: notes
+              servicePort: 8080
+            path: /

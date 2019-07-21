@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <docerfile-maven-version>1.4.3</docerfile-maven-version>
     </properties>
 
     <dependencies>
@@ -76,10 +77,35 @@
     </dependencies>
 
     <build>
+        <finalName>notes</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${docerfile-maven-version}</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <username>aaramg</username>
+                    <!--                    todo Resolve: password to be secret-->
+                    <password></password>
+                    <repository>aaramg/notes</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>
