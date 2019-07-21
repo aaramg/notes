@@ -83,7 +83,7 @@ public class NotesControllerImpl implements NotesController {
     }
 
     private static Long getUserId() {
-        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails instanceof UserPrincipal) {
             return ((UserPrincipal) userDetails).getId();
         }

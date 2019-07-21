@@ -7,7 +7,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity(name = "`user`")
+@Entity
+@javax.persistence.Table(name = "`user`")
 public class User extends BaseEntity {
 
     @Id
