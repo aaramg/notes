@@ -1,5 +1,6 @@
 package com.task.notes.api.commons.model.note;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.task.notes.api.commons.model.user.UserDto;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -12,7 +13,11 @@ public class NoteDto {
     private String title;
     private String description;
     private UserDto user;
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime created;
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime updated;
 
     public NoteDto() {
