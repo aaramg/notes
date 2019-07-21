@@ -8,6 +8,7 @@ Hibernate's auto DDL generation is set to **validate** and DB will be initialize
 It's migration scripts can be found at default location: **resources/db/migration**
 
 After the table creations 2 **users** will be created with ids: -1,-2 and also 2 **notes** with ids:-1,-2 
+
 Security in application is Basic Authentication:
 
 User(id: -1) has **email:** aaramg@gmail.com and **password:** password
